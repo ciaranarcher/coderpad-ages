@@ -5,7 +5,7 @@ import java.net.URISyntaxException;
 import java.time.Duration;
 import java.time.Instant;
 
-public class Ages {
+public class Run {
 
   public static void main(String[] args) throws URISyntaxException, IOException {
 
@@ -14,6 +14,7 @@ public class Ages {
     AgeStatsStreams.generate("ages.json");
     System.out.println("Duration (ms):" + Duration.between(startStreams, Instant.now()).toMillis());
 
+    System.out.println();
 
     System.out.println("Calculated via scanner:");
     var startScanner = Instant.now();

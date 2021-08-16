@@ -57,4 +57,5 @@ public class AgeStatsStreams {
 
     System.out.printf("Average Age: %s years%n", average);
   }
+
 }
