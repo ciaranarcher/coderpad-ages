@@ -36,6 +36,9 @@ public class AgeStatsStreams {
     };
 
     var min = peopleSupplier.get().min((Comparator.comparingInt(o -> o.getInt("age"))));
+    var max = peopleSupplier.get().max((Comparator.comparingInt(o -> o.getInt("age"))));
+    var average = peopleSupplier.get().collect(Collectors.averagingInt(o -> o.getInt("age")));
+
     if (min.isPresent()) {
       var person = min.get();
       System.out.printf("Youngest person: %s %s (%s years)%n", person.getString("first_name"),
@@ -44,7 +47,6 @@ public class AgeStatsStreams {
       System.out.println("No youngest person found");
     }
 
-    var max = peopleSupplier.get().max((Comparator.comparingInt(o -> o.getInt("age"))));
     if (max.isPresent()) {
       var person = max.get();
       System.out.printf("Oldest person: %s %s (%s years)%n", person.getString("first_name"),
@@ -52,8 +54,6 @@ public class AgeStatsStreams {
     } else {
       System.out.println("No oldest person found");
     }
-
-    var average = peopleSupplier.get().collect(Collectors.averagingInt(o -> o.getInt("age")));
 
     System.out.printf("Average Age: %s years%n", average);
   }
