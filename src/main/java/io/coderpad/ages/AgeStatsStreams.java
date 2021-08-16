@@ -13,10 +13,10 @@ import org.json.JSONObject;
 
 public class AgeStatsStreams {
 
-  public static void generate(String fileName) throws URISyntaxException, IOException {
+  public static void generate(String fileName) throws URISyntaxException {
 
     var file = AgeStatsStreams.class.getClassLoader()
-        .getResource("ages.json");
+        .getResource(fileName);
 
     if (file == null) {
       System.out.println("file not found");
